@@ -155,6 +155,18 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: white;
+            animation: logoPulse 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .nav-links {
@@ -722,6 +734,317 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Ribbon Cutting */
+        .ribbon-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .ribbon-overlay.hidden {
+            display: none;
+        }
+
+        .ribbon-text {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5); }
+            50% { text-shadow: 2px 2px 30px rgba(255, 215, 0, 1); }
+        }
+
+        .ribbon-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            height: 100px;
+        }
+
+        .ribbon {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 50%, #ff6b6b 100%);
+            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.8);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.5s;
+        }
+
+        .ribbon::before {
+            content: '✂️';
+            position: absolute;
+            font-size: 3rem;
+            animation: scissorMove 2s ease-in-out infinite;
+        }
+
+        @keyframes scissorMove {
+            0%, 100% { left: 10%; }
+            50% { left: 85%; }
+        }
+
+        .ribbon.cut-left {
+            transform-origin: left;
+            animation: fallLeft 1s ease forwards;
+        }
+
+        .ribbon.cut-right {
+            transform-origin: right;
+            animation: fallRight 1s ease forwards;
+        }
+
+        @keyframes fallLeft {
+            to {
+                transform: translateY(100vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fallRight {
+            to {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .cut-ribbon-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s;
+            animation: btnPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cut-ribbon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.8);
+        }
+
+        /* Responsive */
+        .confetti-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+            animation: confettiBtnPulse 2s ease-in-out infinite;
+        }
+
+        .confetti-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+        }
+
+        @keyframes confettiBtnPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Emoji Reactions */
+        .reaction-bar {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .reaction-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 5px;
+        }
+
+        .reaction-btn:hover {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .floating-reaction {
+            position: fixed;
+            font-size: 3rem;
+            pointer-events: none;
+            z-index: 9996;
+            animation: floatUp 3s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-300px) scale(1.5);
+            }
+        }
+
+        /* Visitor Counter */
+        .visitor-counter {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000;
+            animation: slideInRight 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .visitor-counter h4 {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .visitor-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            display: block;
+        }
+
+        .milestone-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            display: inline-block;
+            animation: badgePulse 1s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Ribbon Cutting */
+        .ribbon-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .ribbon-overlay.hidden {
+            display: none;
+        }
+
+        .ribbon-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .ribbon {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 100%);
+            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.5);
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        .ribbon.cut {
+            transform: scaleY(0);
+            opacity: 0;
+        }
+
+        .ribbon-text {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cut-ribbon-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+
+        .cut-ribbon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -788,6 +1111,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
@@ -814,7 +1138,7 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#team">Team</a></li>
-            <li><a href="#What we do">What We Do</a></li>
+            <li><a href="#events">What We Do</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
         </ul>
         <button class="theme-toggle" id="themeToggle">🌙</button>
@@ -825,7 +1149,7 @@
         <div class="hero-content">
             <div class="hero-emoji">🎊</div>
             <h1>EC Fun Team</h1>
-            <p>A group of volunteers bringing energy, connection, and fun into our workplace! 🌈</p>
+            <p>Energy ⚡<br>Connection 🤝<br>It makes the name "EC" stand for exactly what you do!</p>
             <div class="countdown">
                 <h3>⏰ Next Event: EC Box Cricket Tournament</h3>
                 <div class="countdown-timer" id="countdown">
@@ -1116,6 +1440,8 @@
             });
         }
 
+
+
         // Trigger stats animation when section is visible
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1191,5 +1517,6 @@
             observer.observe(el);
         });
     </script>
+<button class="confetti-btn" onclick="launchConfetti()">🎉</button>
 </body>
 </html>
