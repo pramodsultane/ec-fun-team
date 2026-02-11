@@ -15,8 +15,21 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Floating background elements */
@@ -45,6 +58,68 @@
             50% { transform: translateY(-30px) rotate(10deg); }
         }
 
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            text-align: center;
+        }
+
+        .loader-emoji {
+            font-size: 5rem;
+            animation: spin 2s linear infinite;
+        }
+
+        .loader-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Mouse Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+            pointer-events: none;
+            z-index: 9997;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; transform: scale(2); }
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -57,6 +132,23 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
 
         .logo {
@@ -122,6 +214,45 @@
         .hero-emoji {
             font-size: 5rem;
             animation: bounce 2s infinite;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 50px;
+            border-radius: 20px;
+            margin-top: 30px;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .time-unit {
+            text-align: center;
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
         }
 
         @keyframes slideUp {
@@ -190,6 +321,46 @@
             50% { transform: scale(1.1); }
         }
 
+        /* Stats Section */
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 0 50px;
+            padding: 80px 50px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
         /* Team Section */
         .team-grid {
             display: grid;
@@ -206,6 +377,41 @@
             text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .team-card-front,
+        .team-card-back {
+            position: absolute;
+            width: 100%;
+            backface-visibility: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+        }
+
+        .team-card-back {
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+
+        .team-fun-fact {
+            color: #667eea;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 10px;
         }
 
         .team-card:hover {
@@ -346,6 +552,155 @@
             font-size: 0.9rem;
         }
 
+        /* Gallery Section */
+        .gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-placeholder {
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+
+        .gallery-caption {
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            scroll-snap-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-text {
+            color: #333;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .quote-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            opacity: 0.5;
+        }
+
+        /* Fun Ideas Form */
+        .fun-ideas {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 0 50px;
+            padding: 80px 50px;
+        }
+
+        .fun-ideas form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -405,10 +760,45 @@
             .roadmap-content {
                 flex-direction: column;
             }
+
+            .stats {
+                margin: 0 20px;
+            }
+
+            .fun-ideas {
+                margin: 0 20px;
+                padding: 60px 30px;
+            }
+
+            .testimonial-card {
+                min-width: 280px;
+            }
+
+            .countdown {
+                padding: 20px 30px;
+            }
+
+            .countdown-timer {
+                gap: 10px;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-emoji">🎉</div>
+            <div class="loader-text">Loading Fun...</div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
     <!-- Floating Background Shapes -->
     <div class="floating-shapes">
         <span class="shape">🎈</span>
@@ -424,17 +814,39 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#team">Team</a></li>
-            <li><a href="#events">Events</a></li>
+            <li><a href="#What we do">What We Do</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-emoji">🎉</div>
+            <div class="hero-emoji">🎊</div>
             <h1>EC Fun Team</h1>
             <p>A group of volunteers bringing energy, connection, and fun into our workplace! 🌈</p>
+            <div class="countdown">
+                <h3>⏰ Next Event: EC Box Cricket Tournament</h3>
+                <div class="countdown-timer" id="countdown">
+                    <div class="time-unit">
+                        <span class="time-value" id="days">00</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="hours">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="minutes">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="seconds">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -444,7 +856,7 @@
         <div class="about-content">
             <div class="about-emoji">🌈</div>
             <div class="about-text">
-                <p>We're a passionate group of volunteers dedicated to creating memorable experiences and fostering meaningful connections within our team. From exciting challenges to heartfelt celebrations, we're here to make every moment at work a little more special! ✨</p>
+                <p>We're a passionate group of volunteers turning 'WORKDAYS' into 'BEST DAYS !' ⚡️✨</p>
             </div>
         </div>
     </section>
@@ -454,24 +866,59 @@
         <h2 class="section-title">😄 The Fun Squad</h2>
         <div class="team-grid">
             <div class="team-card">
-                <div class="team-avatar">PS</div>
-                <h3>Pramod Sultane</h3>
-                <p>Fun Champion 🏆</p>
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <div class="team-avatar">PS</div>
+                        <h3></h3>
+                        <p>Fun Champion 🏆</p>
+                    </div>
+                    <div class="team-card-back">
+                        <h3>Pramod Sultane</h3>
+                        <p class="team-fun-fact">🎯 Master at organizing epic tournaments</p>
+                    </div>
+                </div>
             </div>
             <div class="team-card">
-                <div class="team-avatar">NA</div>
-                <h3>Nikita Adsul</h3>
-                <p>Joy Curator 💖</p>
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <div class="team-avatar">NA</div>
+                        <h3></h3>
+                        <p>Joy Curator 💖</p>
+                    </div>
+                    <div class="team-card-back">
+                        <h3>Nikita Adsul</h3>
+                        <p class="team-fun-fact">"Spreading happiness one event at a time!"</p>
+                        <p class="team-fun-fact">🎨 Creative genius behind decorations</p>
+                    </div>
+                </div>
             </div>
             <div class="team-card">
-                <div class="team-avatar">DT</div>
-                <h3>Diksha Tripathi</h3>
-                <p>Vibe Master 🎵</p>
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <div class="team-avatar">DT</div>
+                        <h3></h3>
+                        <p>Vibe Master 🎵</p>
+                    </div>
+                    <div class="team-card-back">
+                        <h3>Diksha Tripathi</h3>
+                        <p class="team-fun-fact">"Fun is the best medicines!"</p>
+                        <p class="team-fun-fact">🎪 Expert at setting the perfect Fun</p>
+                    </div>
+                </div>
             </div>
             <div class="team-card">
-                <div class="team-avatar">SM</div>
-                <h3>Shreyas Manure</h3>
-                <p>Energy Booster ⚡</p>
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <div class="team-avatar">SM</div>
+                        <h3></h3>
+                        <p>Energy Booster ⚡</p>
+                    </div>
+                    <div class="team-card-back">
+                        <h3>Shreyas Manure</h3>
+                        <p class="team-fun-fact">"Bringing high energy to every moment!"</p>
+                        <p class="team-fun-fact">⚡ Always ready for the next adventure</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -534,12 +981,32 @@
                 <div class="roadmap-content">
                     <span class="roadmap-emoji">🎉</span>
                     <div class="roadmap-text">
-                        <h3>Year-End Team Outing & Gratitude Game 💌</h3>
+                        <h3>Year-End Team Outing, Hackathon & Gratitude Game 💌</h3>
                         <p>Celebrate and appreciate each other!</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Fun Ideas Form Section -->
+    <section class="fun-ideas">
+        <h2 class="section-title">💡 Submit Your Fun Ideas</h2>
+        <form action="https://formspree.io/f/mvzbzqdl" method="POST" id="funIdeasForm">
+            <div class="form-group">
+                <label>
+                    Your Name:
+                    <input type="name" name="name" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    Your message:
+                    <textarea name="message" placeholder="Share your fun idea with us!" required></textarea>
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">🚀 Submit Idea</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -550,6 +1017,148 @@
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+                launchConfetti();
+            }, 1500);
+        });
+
+        // Confetti Animation
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const confetti = [];
+            const colors = ['#ffd700', '#ff6b6b', '#667eea', '#764ba2', '#48dbfb'];
+
+            for (let i = 0; i < 150; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 4,
+                    speed: Math.random() * 3 + 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                confetti.forEach((piece, index) => {
+                    ctx.save();
+                    ctx.translate(piece.x, piece.y);
+                    ctx.rotate((piece.rotation * Math.PI) / 180);
+                    ctx.fillStyle = piece.color;
+                    ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
+                    ctx.restore();
+
+                    piece.y += piece.speed;
+                    piece.rotation += 2;
+
+                    if (piece.y > canvas.height) {
+                        confetti.splice(index, 1);
+                    }
+                });
+
+                if (confetti.length > 0) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            animate();
+        }
+
+        // Countdown Timer (Set to March 31, 2026 - End of Q1)
+        function updateCountdown() {
+            const eventDate = new Date('2026-03-19T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Animated Stats Counter
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCount = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.ceil(current) + '+';
+                        setTimeout(updateCount, 20);
+                    } else {
+                        stat.textContent = target + '+';
+                    }
+                };
+                
+                updateCount();
+            });
+        }
+
+        // Trigger stats animation when section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+
+        // Mouse Cursor Trail
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = e.pageX + 'px';
+            trail.style.top = e.pageY + 'px';
+            document.body.appendChild(trail);
+
+            setTimeout(() => trail.remove(), 1000);
+        });
+
+        // Fun Ideas Form
+        document.getElementById('funIdeasForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🎉 Thank you for your awesome idea! We\'ll review it soon!');
+            e.target.reset();
+        });
+
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -575,7 +1184,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.team-card, .event-card').forEach(el => {
+        document.querySelectorAll('.team-card, .event-card, .gallery-item, .testimonial-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
