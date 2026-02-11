@@ -70,7 +70,7 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 10s ease;
         }
 
         .loading-screen.hidden {
@@ -373,7 +373,7 @@
             margin-bottom: 15px;
         }
 
-        /* Team Section */
+        /* Team Section - UPDATED with images */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -407,7 +407,7 @@
 
         .team-card-front,
         .team-card-back {
-            position: absolute;
+            position: relative;
             width: 100%;
             backface-visibility: hidden;
             background: rgba(255, 255, 255, 0.95);
@@ -415,8 +415,16 @@
         }
 
         .team-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             transform: rotateY(180deg);
-            padding: 20px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .team-fun-fact {
@@ -431,18 +439,26 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
 
+        /* Updated avatar styles for images */
         .team-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-            color: white;
-            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .team-card h3 {
@@ -624,7 +640,15 @@
         .testimonial-slider::-webkit-scrollbar {
             display: none;
         }
+/* For Firefox */
+html {
+    scrollbar-width: none;
+}
 
+/* For Edge/IE */
+body {
+    -ms-overflow-style: none;
+}
         .testimonial-card {
             min-width: 350px;
             background: rgba(255, 255, 255, 0.95);
@@ -978,73 +1002,6 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Ribbon Cutting */
-        .ribbon-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .ribbon-overlay.hidden {
-            display: none;
-        }
-
-        .ribbon-container {
-            position: relative;
-            width: 80%;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .ribbon {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 100%);
-            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.5);
-            transition: all 0.5s;
-            position: relative;
-        }
-
-        .ribbon.cut {
-            transform: scaleY(0);
-            opacity: 0;
-        }
-
-        .ribbon-text {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .cut-ribbon-btn {
-            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
-            color: white;
-            border: none;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
-            transition: all 0.3s;
-            margin-top: 30px;
-        }
-
-        .cut-ribbon-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -1185,27 +1142,34 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section with images -->
     <section id="team">
         <h2 class="section-title">😄 The Fun Squad</h2>
         <div class="team-grid">
+            <!-- Pramod Sultane -->
             <div class="team-card">
                 <div class="team-card-inner">
                     <div class="team-card-front">
-                        <div class="team-avatar">PS</div>
+                        <div class="team-avatar">
+                            <img src="Pramod.png" alt="Pramod Sultane" onerror="this.src='https://via.placeholder.com/140?text=PS'">
+                        </div>
                         <h3></h3>
                         <p>Fun Champion 🏆</p>
                     </div>
                     <div class="team-card-back">
                         <h3>Pramod Sultane</h3>
                         <p class="team-fun-fact">🎯 Master at organizing epic tournaments</p>
+                        <p class="team-fun-fact">⚡ Sports leagues organizer</p>
                     </div>
                 </div>
             </div>
+            <!-- Nikita Adsul -->
             <div class="team-card">
                 <div class="team-card-inner">
                     <div class="team-card-front">
-                        <div class="team-avatar">NA</div>
+                        <div class="team-avatar">
+                            <img src="Nikita.png" alt="Nikita Adsul" onerror="this.src='https://via.placeholder.com/140?text=NA'">
+                        </div>
                         <h3></h3>
                         <p>Joy Curator 💖</p>
                     </div>
@@ -1216,31 +1180,37 @@
                     </div>
                 </div>
             </div>
+            <!-- Diksha Tripathi -->
             <div class="team-card">
                 <div class="team-card-inner">
                     <div class="team-card-front">
-                        <div class="team-avatar">DT</div>
+                        <div class="team-avatar">
+                            <img src="Diksha.png" alt="Diksha Tripathi" onerror="this.src='https://via.placeholder.com/140?text=DT'">
+                        </div>
                         <h3></h3>
-                        <p>Vibe Master 🎵</p>
+                        <p>Energy Setter 🎵</p>
                     </div>
                     <div class="team-card-back">
                         <h3>Diksha Tripathi</h3>
-                        <p class="team-fun-fact">"Fun is the best medicines!"</p>
-                        <p class="team-fun-fact">🎪 Expert at setting the perfect Fun</p>
+                        <p class="team-fun-fact">"Fun is the best medicine!"</p>
+                        <p class="team-fun-fact">🎪 Expert at setting the perfect energy</p>
                     </div>
                 </div>
             </div>
+            <!-- Shreyas Manure -->
             <div class="team-card">
                 <div class="team-card-inner">
                     <div class="team-card-front">
-                        <div class="team-avatar">SM</div>
+                        <div class="team-avatar">
+                            <img src="Shreyas.png" alt="Shreyas Manure" onerror="this.src='https://via.placeholder.com/140?text=SM'">
+                        </div>
                         <h3></h3>
-                        <p>Energy Booster ⚡</p>
+                        <p>Enthusiast Booster ⚡</p>
                     </div>
                     <div class="team-card-back">
                         <h3>Shreyas Manure</h3>
                         <p class="team-fun-fact">"Bringing high energy to every moment!"</p>
-                        <p class="team-fun-fact">⚡ Always ready for the next adventure</p>
+                        <p class="team-fun-fact">⚡ Adventure sports enthusiast</p>
                     </div>
                 </div>
             </div>
@@ -1315,7 +1285,7 @@
 
     <!-- Fun Ideas Form Section -->
     <section class="fun-ideas">
-        <h2 class="section-title">💡 Submit Your Fun Ideas</h2>
+        <h2 class="section-title">💡 Submit Your Fun Ideas/Achievements</h2>
         <form action="https://formspree.io/f/mvzbzqdl" method="POST" id="funIdeasForm">
             <div class="form-group">
                 <label>
@@ -1336,7 +1306,7 @@
     <!-- Footer -->
     <footer>
         <p class="footer-emoji">🎡</p>
-        <p>Made with ❤️ by Pramod Sultane © 2026</p>
+        <p>Made with ❤️, ☕, and lots of 😄 by Pramod Sultane © 2026</p>
         <p>Let's make work fun together!</p>
     </footer>
 
@@ -1440,23 +1410,6 @@
             });
         }
 
-
-
-        // Trigger stats animation when section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-
         // Dark Mode Toggle
         const themeToggle = document.getElementById('themeToggle');
         let isDark = false;
@@ -1517,6 +1470,6 @@
             observer.observe(el);
         });
     </script>
-<button class="confetti-btn" onclick="launchConfetti()">🎉</button>
+    <button class="confetti-btn" onclick="launchConfetti()">🎉</button>
 </body>
 </html>
