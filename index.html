@@ -70,7 +70,7 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 5s ease;
+            transition: opacity 10s ease;
         }
 
         .loading-screen.hidden {
@@ -737,6 +737,72 @@ body {
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
         }
 
+        /* Next Actions Section */
+        .next-actions {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 0 50px;
+            padding: 80px 50px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .next-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: cardFloat 3s ease-in-out infinite;
+        }
+
+        .action-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .action-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .action-card h3 {
+            color: #333;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .action-desc {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .action-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -1050,6 +1116,19 @@ body {
                 padding: 60px 30px;
             }
 
+            .next-actions {
+                margin: 0 20px;
+                padding: 60px 30px;
+            }
+
+            .next-actions-grid {
+                gap: 30px;
+            }
+
+            .action-card h3 {
+                font-size: 1.4rem;
+            }
+
             .testimonial-card {
                 min-width: 280px;
             }
@@ -1302,6 +1381,37 @@ body {
             <button type="submit" class="submit-btn">🚀 Submit Idea</button>
         </form>
     </section>
+
+<!-- Next Actions Section - Added here -->
+<section class="next-actions">
+    <h2 class="section-title">📋 Next Actions</h2>
+    <div class="next-actions-grid">
+        <div class="action-card">
+            <div class="action-icon">📅</div>
+            <h3>Yearly Calendar</h3>
+            <p class="action-desc">For all events</p>
+            <span class="action-tag">Coming Soon</span>
+        </div>
+        <div class="action-card">
+            <div class="action-icon">📸</div>
+            <h3>Photo Gallery</h3>
+            <p class="action-desc">For past events</p>
+            <span class="action-tag">Coming Soon</span>
+        </div>
+        <div class="action-card">
+            <div class="action-icon">🎂</div>
+            <h3>Birthday Wall</h3>
+            <p class="action-desc">Upcoming birthdays with celebration countdown</p>
+            <span class="action-tag">Coming Soon</span>
+        </div>
+        <div class="action-card">
+            <div class="action-icon">🤓</div>
+            <h3>Fun Facts Generator</h3>
+            <p class="action-desc">Random EC team trivia & Fun facts</p>
+            <span class="action-tag">Coming Soon</span>
+        </div>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
