@@ -82,11 +82,7 @@
             text-align: center;
         }
 
-        .loader-emoji {
-            font-size: 5rem;
-            animation: spin 2s linear infinite;
-        }
-
+    
         .loader-text {
             color: white;
             font-size: 1.5rem;
@@ -1233,10 +1229,9 @@ body {
                             <img src="Pramod.png" alt="Pramod Sultane" onerror="this.src='https://via.placeholder.com/140?text=PS'">
                         </div>
                         <h3></h3>
-                        <p>Fun Champion 🏆</p>
+                        <p>Pramod Sultane</p>
                     </div>
                     <div class="team-card-back">
-                        <h3>Pramod Sultane</h3>
                         <p class="team-fun-fact">🎯 Master at organizing epic tournaments</p>
                         <p class="team-fun-fact">⚡ Sports leagues organizer</p>
                     </div>
@@ -1250,10 +1245,9 @@ body {
                             <img src="Nikita.png" alt="Nikita Adsul" onerror="this.src='https://via.placeholder.com/140?text=NA'">
                         </div>
                         <h3></h3>
-                        <p>Joy Curator 💖</p>
+                        <p>Nikita Adsul</p>
                     </div>
                     <div class="team-card-back">
-                        <h3>Nikita Adsul</h3>
                         <p class="team-fun-fact">"Spreading happiness one event at a time!"</p>
                         <p class="team-fun-fact">🎨 Creative genius behind decorations</p>
                     </div>
@@ -1267,10 +1261,9 @@ body {
                             <img src="Diksha.png" alt="Diksha Tripathi" onerror="this.src='https://via.placeholder.com/140?text=DT'">
                         </div>
                         <h3></h3>
-                        <p>Energy Setter 🎵</p>
+                        <p>Diksha Tripathi</p>
                     </div>
                     <div class="team-card-back">
-                        <h3>Diksha Tripathi</h3>
                         <p class="team-fun-fact">"Fun is the best medicine!"</p>
                         <p class="team-fun-fact">🎪 Expert at setting the perfect energy</p>
                     </div>
@@ -1284,10 +1277,9 @@ body {
                             <img src="Shreyas.png" alt="Shreyas Manure" onerror="this.src='https://via.placeholder.com/140?text=SM'">
                         </div>
                         <h3></h3>
-                        <p>Enthusiast Booster ⚡</p>
+                        <p>Shreyas Manure</p>
                     </div>
                     <div class="team-card-back">
-                        <h3>Shreyas Manure</h3>
                         <p class="team-fun-fact">"Bringing high energy to every moment!"</p>
                         <p class="team-fun-fact">⚡ Adventure sports enthusiast</p>
                     </div>
@@ -1405,9 +1397,9 @@ body {
             <span class="action-tag">Coming Soon</span>
         </div>
         <div class="action-card">
-            <div class="action-icon">🤓</div>
-            <h3>Fun Facts Generator</h3>
-            <p class="action-desc">Random EC team trivia & Fun facts</p>
+            <div class="action-icon">✍️</div>
+            <h3>Blogs</h3>
+            <p class="action-desc">Blogs about your experiences/Travel & Culture/Finance/unique recipies</p>
             <span class="action-tag">Coming Soon</span>
         </div>
     </div>
@@ -1581,5 +1573,304 @@ body {
         });
     </script>
     <button class="confetti-btn" onclick="launchConfetti()">🎉</button>
+
+<!-- Breaking Fun: EC Team Facts Ticker -->
+<div class="facts-ticker-container">
+    <div class="ticker-label">
+        <span class="ticker-icon">📰</span>
+        <span class="ticker-text">EC FUN FACTS</span>
+    </div>
+    <div class="ticker-wrapper">
+        <div class="ticker-marquee" id="tickerMarquee">
+            <!-- Facts will be populated by JavaScript -->
+        </div>
+    </div>
+    <button class="ticker-pause" id="tickerPauseBtn" onclick="toggleTicker()">⏸️</button>
+</div>
+
+<style>
+/* Breaking Fun Ticker - News Channel Style - REDUCED HEIGHT & SLOWER SPEED */
+.facts-ticker-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+    border-top: 2px solid #ffd700; /* Thinner border */
+    border-bottom: 2px solid #ff6b6b; /* Thinner border */
+    display: flex;
+    align-items: center;
+    padding: 4px 0; /* Reduced from 8px */
+    z-index: 9999;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.3); /* Smaller shadow */
+    font-family: 'Poppins', sans-serif;
+    height: 40px; /* FIXED HEIGHT - half of original size */
+}
+
+.ticker-label {
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    color: white;
+    padding: 6px 20px; /* Reduced padding */
+    font-weight: 700;
+    font-size: 0.9rem; /* Smaller font */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    margin-right: 15px;
+    min-width: 150px; /* Slightly smaller */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    letter-spacing: 1.5px;
+    height: 100%; /* Fill container height */
+}
+
+.ticker-icon {
+    font-size: 1.1rem; /* Smaller icon */
+    animation: pulse 1.5s infinite;
+}
+
+.ticker-wrapper {
+    flex: 1;
+    overflow: hidden;
+    padding: 2px 0; /* Reduced padding */
+    position: relative;
+    height: 100%; /* Fill container height */
+    display: flex;
+    align-items: center;
+}
+
+.ticker-wrapper::before,
+.ticker-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 60px; /* Smaller fade area */
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ticker-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, #16213e, transparent);
+}
+
+.ticker-wrapper::after {
+    right: 0;
+    background: linear-gradient(90deg, transparent, #16213e);
+}
+
+.ticker-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollTicker 80s linear infinite; /* MUCH SLOWER - doubled from 40s to 80s */
+    padding-right: 30px;
+    line-height: 1; /* Tighter line height */
+}
+
+.ticker-item {
+    display: inline-block;
+    color: white;
+    font-size: 0.9rem; /* Smaller font */
+    margin-right: 40px; /* Slightly less spacing */
+    position: relative;
+}
+
+.ticker-item i {
+    font-style: normal;
+    background: rgba(255, 215, 0, 0.2);
+    padding: 3px 10px; /* Smaller padding */
+    border-radius: 20px;
+    margin-right: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    font-size: 0.8rem; /* Smaller font */
+}
+
+.ticker-item strong {
+    color: #ffd700;
+    margin: 0 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.ticker-item span {
+    color: #ffd700;
+    font-size: 1rem; /* Smaller emoji */
+    margin-right: 6px;
+}
+
+.ticker-pause {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    color: white;
+    width: 32px; /* Smaller button */
+    height: 32px; /* Smaller button */
+    border-radius: 50%;
+    margin: 0 15px;
+    cursor: pointer;
+    font-size: 1rem; /* Smaller icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+    flex-shrink: 0;
+}
+
+.ticker-pause:hover {
+    background: rgba(255, 215, 0, 0.3);
+    transform: scale(1.1);
+    border-color: #ffd700;
+}
+
+.ticker-pause.paused {
+    background: rgba(255, 107, 107, 0.3);
+}
+
+@keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Pause animation on hover */
+.ticker-wrapper:hover .ticker-marquee {
+    animation-play-state: paused;
+}
+
+/* Responsive ticker - even smaller on mobile */
+@media (max-width: 768px) {
+    .facts-ticker-container {
+        height: 40px; /* Even smaller on mobile */
+        padding: 2px 0;
+    }
+    
+    .ticker-label {
+        min-width: 120px;
+        padding: 4px 12px;
+        font-size: 0.8rem;
+        margin-right: 10px;
+    }
+    
+    .ticker-item {
+        font-size: 0.8rem;
+        margin-right: 25px;
+    }
+    
+    .ticker-pause {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+        margin: 0 8px;
+    }
+    
+    .ticker-icon {
+        font-size: 0.95rem;
+    }
+    
+    .ticker-item i {
+        padding: 2px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .ticker-item span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark mode support */
+.dark-mode .facts-ticker-container {
+    background: linear-gradient(90deg, #0a0a1a 0%, #0c0c1e 100%);
+}
+
+.dark-mode .ticker-wrapper::before {
+    background: linear-gradient(90deg, #0c0c1e, transparent);
+}
+
+.dark-mode .ticker-wrapper::after {
+    background: linear-gradient(90deg, transparent, #0c0c1e);
+}
+
+/* Flashing animation for breaking effect */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+</style>
+
+<script>
+// EC Fun Team - Breaking News Ticker Facts
+const tickerFacts = [
+    { text: "CXS domain alone has the headcount of a small tech company — and still growing into two more areas", category: "PEOPLE" },
+    { text: "The NPS score hit a record high! since the program existed", category: "NPS" },
+    { text: "GenAI, MCP, Copilot, automation, dashboards — AI is making cameo appearances in EC", category: "AI" },
+    { text: "DRIVE domain has 76 people — but supports more apps than a smartphone", category: "APPS" },
+    { text: "EC Team NPS insights cover 10+ countries (Germany, France, US, Italy, Australia, China, Brazil, Canada, Spain, India, Netherlands)", category: "NPS" },
+    { text: "EC Has One of the Most Diverse Skill Mixes in DOTI–BS (architecture, analytics, QA, DevOps, integration, data engineering, portal, marketing, event planning, and even FUN governance)", category: "PEOPLE" },
+];
+
+// Duplicate facts for seamless infinite scroll
+function initTicker() {
+    const marquee = document.getElementById('tickerMarquee');
+    let html = '';
+    
+    // Triple the facts for smooth infinite scroll
+    for (let i = 0; i < 3; i++) {
+        tickerFacts.forEach(fact => {
+            html += `<div class="ticker-item">
+                        <i>${fact.category}</i>
+                        <strong>⚡</strong> ${fact.text}
+                    </div>`;
+        });
+    }
+    
+    marquee.innerHTML = html;
+}
+
+// Pause/Play functionality
+let isTickerPaused = false;
+
+function toggleTicker() {
+    const marquee = document.getElementById('tickerMarquee');
+    const pauseBtn = document.getElementById('tickerPauseBtn');
+    
+    if (isTickerPaused) {
+        marquee.style.animationPlayState = 'running';
+        pauseBtn.textContent = '⏸️';
+        pauseBtn.classList.remove('paused');
+    } else {
+        marquee.style.animationPlayState = 'paused';
+        pauseBtn.textContent = '▶️';
+        pauseBtn.classList.add('paused');
+    }
+    
+    isTickerPaused = !isTickerPaused;
+}
+
+// Speed control
+function setTickerSpeed(speed) {
+    const marquee = document.getElementById('tickerMarquee');
+    marquee.style.animationDuration = speed + 's';
+}
+
+// Initialize on load
+window.addEventListener('load', () => {
+    initTicker();
+    setTickerSpeed(200); // Set to 80 seconds for slower scroll   
+});
+
+// Pause ticker when user interacts with certain elements
+document.querySelectorAll('.fact-btn, .confetti-btn, .submit-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        document.getElementById('tickerMarquee').style.animationPlayState = 'paused';
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        if (!isTickerPaused) {
+            document.getElementById('tickerMarquee').style.animationPlayState = 'running';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
