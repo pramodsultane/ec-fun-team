@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC Team Blogs ✍️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Navigation - Copy from your main site */
+        nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Blog Listing Styles */
+        .blog-header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .blog-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-title a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .blog-title a:hover {
+            color: #667eea;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .read-more:hover {
+            color: #764ba2;
+        }
+        
+        /* Back to main site button */
+        .back-home {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .back-home a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .blog-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="../index.html">🎉 EC Fun Team</a></div>
+        <ul class="nav-links">
+            <li><a href="../index.html#about">👥 About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Blog Header -->
+    <div class="blog-header">
+        <h1>✍️ EC Team Blogs</h1>
+        <p>Stories, experiences, and adventures from our team</p>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+        <!-- Blog Post 1 - Travel -->
+        <div class="blog-card">
+            <div class="blog-image">🏔️</div>
+            <div class="blog-content">
+                <span class="blog-category">Travel</span>
+                <h2 class="blog-title"><a href="travel-manali.html">My Himalayan Adventure in Manali</a></h2>
+                <div class="blog-meta">
+                    <span>By Akshaykumar</span>
+                    <span>📅 Mar 15, 2026</span>
+                </div>
+                <p class="blog-excerpt">Snow-capped mountains, hot chai, and memories that will last a lifetime. Join me on my journey through the beautiful valleys of Manali...</p>
+                <a href="travel-manali.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- Blog Post 2 - Finance -->
+        <div class="blog-card">
+            <div class="blog-image">💰</div>
+            <div class="blog-content">
+                <span class="blog-category">Finance</span>
+                <h2 class="blog-title"><a href="finance-tips.html">5 Money Tips Every Professional Should Know</a></h2>
+                <div class="blog-meta">
+                    <span>By Pramod</span>
+                    <span>📅 Mar 10, 2026</span>
+                </div>
+                <p class="blog-excerpt">Simple yet effective ways to manage your finances, save more, and invest wisely for a secure future...</p>
+                <a href="finance-tips.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+    <!-- Back to Home -->
+    <div class="back-home">
+        <a href="../index.html">← Back to EC Fun Team</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by Pramod Sultane © 2026</p>
+    </footer>
+</body>
+</html>
