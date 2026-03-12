@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Is Yours - EC Team Blogs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Blog Post Styles */
+        .blog-post-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .post-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .post-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .post-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .post-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            margin-bottom: 40px;
+        }
+        
+        .post-content {
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .post-content h2 {
+            color: #333;
+            margin: 30px 0 15px;
+            font-size: 1.8rem;
+        }
+        
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        
+        .post-content ul, .post-content ol {
+            margin: 20px 0 20px 40px;
+        }
+        
+        .post-content li {
+            margin-bottom: 10px;
+        }
+        
+        .post-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .author-info h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-blogs {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 40px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .blog-post-container { margin: 20px; padding: 30px; }
+            .post-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="../index.html">🎉 EC Fun Team</a></div>
+        <ul class="nav-links">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#team">Team</a></li>
+            <li><a href="../index.html#events">Events</a></li>
+            <li><a href="../index.html#roadmap">Roadmap</a></li>
+        </ul>
+    </nav>
+
+    <!-- Blog Post -->
+    <div class="blog-post-container">
+        <div class="post-header">
+            <span class="post-category">Motivation</span>
+            <h1 class="post-title">CHOICE IS YOURS</h1>
+            <p style="color:#666; font-size:1.1rem; margin-top:-10px; margin-bottom:10px;">Little More Than Never Before</p>
+            <div class="post-meta">
+                <span>✍️ By Nikita Adsul</span>
+                <span>📅 March 15, 2026</span>
+                <span>⏱️ 5 min read</span>
+            </div>
+        </div>
+
+        <div class="post-image">💡</div>
+
+        <div class="post-content">
+            <p>The other day when I opened my wardrobe while hunting for something and closed it on disappointed for not being able to find it, a little plastic bottle of oil tumbled off the rack, I kept in the same place. It again fell down. I put it back in its place though it just couldn't balance itself and kept falling. It hit me immediately that it was due to the bottle being empty and I mulled over it I could completely relate it with a human being. A human with no knowledge of any kind is just like this empty bottle and never be able to stand with pride. Skills and talent play very crucial part in one's life.</p>
+
+            <p>After contemplating further, I realized that the bottle would have stayed put in case it was made out of glass or some heavy material isn't it? However, it would be still empty and only exogenously strong. One fall and it would shatter in the pieces. In the same way, being born with a silver spoon might make life seems like a bed of roses but always be called with already owned name irrespective of one's own identity.</p>
+
+            <p>If the bottle was not empty but the content of it got expired, it would still be of no use and would be put in trash. Ergo, it is essential for one to stay updated with the ever developing technologies to keep up with the world around you just like your smartphone needs new updates once in a while. Change is the only constant and adapting to the changes around you and making the best out of it is the only way to sustain in this competitive world. Adopting changes that we have never experienced can be a great operator of our personal and professional growth and you never know how it will turn into opportunities.</p>
+
+            <p>We all know if we consistently work towards goal whether it's a professional goal, fitness goal or something else altogether, we can always look for improving ourselves for sure.</p>
+
+            <p>Summing up to this piece, I would say we should not be idle but always with something within which can help to create our own identity by upgrading ourselves. Choice is yours!</p>
+        </div>
+
+        <div class="post-footer">
+            <div class="post-author">
+                <div class="author-avatar">👤</div>
+                <div class="author-info">
+                    <h4>Nikita Adsul</h4>
+                    <p>Blogger & Motivational Writer</p>
+                </div>
+            </div>
+            <div>
+                <span class="post-category">#Motivation</span>
+                <span class="post-category">#Growth</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Blogs -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <a href="index.html" class="back-to-blogs">← Back to All Blogs</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by EC Fun Team © 2026</p>
+    </footer>
+</body>
+</html>
