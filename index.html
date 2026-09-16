@@ -1269,7 +1269,7 @@ body {
             <h1>EC Fun Team</h1>
             <p>Energy ⚡ - Connection 🤝<br>It makes the name "EC" stand for exactly what you do!</p>
             <div class="countdown">
-                <h3>⏰ Next Event: EC Box Cricket Tournament</h3>
+                <h3>⏰ Next Event: EC Dinner with PAJ + Birthday Celebrations + Photography Results</h3>
                 <div class="countdown-timer" id="countdown">
                     <div class="time-unit">
                         <span class="time-value" id="days">00</span>
@@ -1407,6 +1407,37 @@ body {
 
             <div class="event-list" id="eventList">
                 <!-- Selected day events will show here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 2027 Fun Activities Section -->
+    <section id="activities-2027">
+        <h2 class="section-title">🎉 2027 Fun Activities</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-icon">🥂</div>
+                <h3>New Year Kickoff &amp; Team Brunch</h3>
+                <p>23/01/2027</p>
+                <p>Start the year with good food, fresh goals, and great company.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🌿</div>
+                <h3>Outdoor Adventure &amp; Nature Photography</h3>
+                <p>17/04/2027</p>
+                <p>Explore the outdoors and capture the moments that bring us together.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🏅</div>
+                <h3>EC Sports Day &amp; Team Challenges</h3>
+                <p>24/07/2027</p>
+                <p>Compete, collaborate, and celebrate our team spirit.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🎤</div>
+                <h3>Year-End Celebration &amp; Talent Showcase</h3>
+                <p>27/11/2027</p>
+                <p>Wrap up the year with performances, appreciation, and memories.</p>
             </div>
         </div>
     </section>
@@ -1648,7 +1679,7 @@ const birthdays = [
 
         // Countdown Timer (Set to March 31, 2026 - End of Q1)
         function updateCountdown() {
-            const eventDate = new Date('2026-03-28T00:00:00').getTime();
+            const eventDate = new Date('2026-09-22T00:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
@@ -2053,9 +2084,9 @@ document.querySelectorAll('.fact-btn, .confetti-btn, .submit-btn').forEach(btn =
         // Roadmap -> Yearly calendar data & rendering
         (function() {
             const events = [
-                { date: '2026-03-28', title: 'EC Box Cricket Tournament', desc: 'Get ready to hit some sixes!' },
+                { date: '2026-09-22', title: 'EC Dinner with PAJ + Birthday Celebrations + Photography Results', desc: 'Celebrate together and enjoy the photography results!' },
                 { date: '2026-06-15', title: 'Hiking & Nature Photography Walk', desc: 'Explore nature and capture memories!' },
-                { date: '2026-09-14', title: 'Escape Room Challenge / Bowling', desc: 'Test your teamwork and skills!' },
+                { date: '2026-10-14', title: 'Escape Room Challenge / Bowling', desc: 'Test your teamwork and skills!' },
                 { date: '2026-12-26', title: 'Year-End Team Outing, Hackathon & Gratitude Game', desc: 'Celebrate and appreciate each other!' },
                 { date: '2026-02-26', title: 'Celebrations!', desc: 'Monthly Birthdays & Achievements Celebrations!' },
                 { date: '2026-04-15', title: 'Celebrations!', desc: 'Monthly Birthdays & Achievements Celebrations!' },
